@@ -1,2 +1,2 @@
 # PhotosGallery
-Web app emulating the Windows Photos App to display images
+Web app emulating Microsoft Windows Photos App to display images
