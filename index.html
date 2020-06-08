@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Gallery</title>
+	<link rel="icon" href="images/7.jpg">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<body class="full_dims">
+	<span class="arrows prev" onclick="engineX(-1);" title="Previous">&#9001;</span>
+	<div class="container flex-middle full_dims">
+		<img src="images/1.jpg" id="image">
+	</div>
+	<span class="arrows next" onclick="engineX(1);" title="Next">&#9002;</span>
+	<span class="title-text flex-middle wide" id="title-text">1/10</span>
+</body>
+<script type="text/javascript">
+	function node (e) { return document.querySelector(e) }
+	let current_image = 1;
+
+	// key functionality
+	document.addEventListener('keydown', (e)=> {
+		let key = e.which;
+		if (key==37) {
+			engineX(-1);
+		} else if (key==39) {
+			engineX(1);
+		}
+	});
+
+	// iterate through the images (the logic of changing the images)
+	function engineX (e) {
+		total_images_count = 10;
+		current_image += e;
+		if (current_image>total_images_count)
+			current_image = 1;
+		if (current_image<1)
+			current_image = total_images_count;
+		
+		setImage(current_image);
+		setTitleText(current_image+'/'+total_images_count);
+	}
+
+	// set the image
+	function setImage (image_path) {
+		node('#image').src = 'images/'+image_path+'.jpg';
+	}
+	// set title text
+	function setTitleText (title_text) {
+		node('#title-text').innerHTML = title_text;
+	}
+</script>
+</html>
